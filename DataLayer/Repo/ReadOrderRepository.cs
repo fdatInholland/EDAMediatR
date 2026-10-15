@@ -22,6 +22,7 @@ namespace DataLayer.Repo
 
         public async Task<IEnumerable<Order>> GetManyAsync(DateTime? startPeriod, DateTime? endPeriod, Guid? customerId)
         {
+            //Deferred execution - only query definition
             IQueryable<Order> query = _readOrderDbContext.Orders;
 
             if (startPeriod.HasValue)

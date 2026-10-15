@@ -25,6 +25,8 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(IEnumerable<OrderBasicInfoDTO>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetByDate([FromQuery] DateTime startDate)
         {
+
+            //Demo purposes!!!
             string creationdate = "2026-06-02 08:30:00.0000000";
 
             string format = "yyyy-MM-dd HH:mm:ss.fffffff";
@@ -52,9 +54,9 @@ namespace WebApi.Controllers
 
         //POSTMAN https://localhost:7135/Orders/discount
         [HttpPost("discount")]
-        [ProducesResponseType(typeof(IEnumerable<OrderBasicInfoDTO>), StatusCodes.Status201Created)]
         public async Task<IActionResult> GetDiscount(Guid OrderId, decimal discount)
         {
+            //Demo purposes!!!
             string stringOrderId = "A1111111-1111-1111-1111-111111111111";
             Guid orderId = Guid.Parse(stringOrderId);
 
