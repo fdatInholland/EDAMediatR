@@ -26,18 +26,7 @@ namespace WebApi.Controllers
         public async Task<IActionResult> GetByDate([FromQuery] DateTime startDate)
         {
 
-            //Demo purposes!!!
-            string creationdate = "2026-06-02 08:30:00.0000000";
-
-            string format = "yyyy-MM-dd HH:mm:ss.fffffff";
-
-            DateTime parsedDate = DateTime.ParseExact(
-                creationdate,
-                format,
-                CultureInfo.InvariantCulture
-            );
-
-            var query = new OrderByStartDateQuery(parsedDate);
+            var query = new OrderByStartDateQuery(startDate);
 
             var orders = await _mediator.Send(query);
 
@@ -54,13 +43,8 @@ namespace WebApi.Controllers
 
         //POSTMAN https://localhost:7135/Orders/discount
         [HttpPost("discount")]
-        public async Task<IActionResult> GetDiscount(Guid OrderId, decimal discount)
+        public async Task<IActionResult> GetDiscount(Guid orderId, decimal discount)
         {
-            //Demo purposes!!!
-            string stringOrderId = "A1111111-1111-1111-1111-111111111111";
-            Guid orderId = Guid.Parse(stringOrderId);
-
-            discount = 0.0m;
 
             var command = new ApplyDiscountCommand(orderId, discount, DateTime.UtcNow);
 
